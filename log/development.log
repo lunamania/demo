@@ -1,0 +1,60 @@
+  [4;36;1mSQL (0.4ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mselect sqlite_version(*)[0m
+  [4;36;1mSQL (2.7ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (2.2ms)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (20090613210533)
+  [4;36;1mSQL (0.8ms)[0m   [0;1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "email" varchar(255), "address" text, "active" boolean, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.2ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20090613210533')[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("users")[0m
+
+
+Processing UsersController#index (for 127.0.0.1 at 2009-06-13 14:06:40) [GET]
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM "users" [0m
+Rendering template within layouts/users
+Rendering users/index
+Completed in 38ms (View: 33, DB: 0) | 200 OK [http://127.0.0.1/users]
+
+
+Processing UsersController#new (for 127.0.0.1 at 2009-06-13 14:06:45) [GET]
+Rendering template within layouts/users
+Rendering users/new
+Completed in 12ms (View: 7, DB: 0) | 200 OK [http://127.0.0.1/users/new]
+
+
+Processing UsersController#create (for 127.0.0.1 at 2009-06-13 14:07:08) [POST]
+  Parameters: {"user"=>{"name"=>"Sam Pierson", "address"=>"Somewhere over a rainbow", "active"=>"1", "email"=>"sam@examle.com"}, "commit"=>"Create", "authenticity_token"=>"4WuN4kijL8/qd1mWFFRg6Hgoic6EY8hZ7Fl6/ei+V6U="}
+  [4;35;1mUser Create (0.5ms)[0m   [0mINSERT INTO "users" ("name", "updated_at", "address", "email", "active", "created_at") VALUES('Sam Pierson', '2009-06-13 21:07:08', 'Somewhere over a rainbow', 'sam@examle.com', 't', '2009-06-13 21:07:08')[0m
+Redirected to http://127.0.0.1:3000/users/1
+Completed in 24ms (DB: 1) | 302 Found [http://127.0.0.1/users]
+
+
+Processing UsersController#show (for 127.0.0.1 at 2009-06-13 14:07:08) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+Rendering template within layouts/users
+Rendering users/show
+Completed in 11ms (View: 6, DB: 0) | 200 OK [http://127.0.0.1/users/1]
+
+
+Processing UsersController#index (for 127.0.0.1 at 2009-06-13 14:07:14) [GET]
+  [4;35;1mUser Load (0.5ms)[0m   [0mSELECT * FROM "users" [0m
+Rendering template within layouts/users
+Rendering users/index
+Completed in 8ms (View: 4, DB: 0) | 200 OK [http://127.0.0.1/users]
